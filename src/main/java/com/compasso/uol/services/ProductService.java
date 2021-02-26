@@ -2,8 +2,6 @@ package com.compasso.uol.services;
 
 
 import java.util.Optional;
-
-import javax.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -39,45 +37,45 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductDTO fidById(Long id) {
-        Optional<Product> obj = productRepository.findById(id);
-        Product entity = obj.orElseThrow(() -> new ObjectNotFoundException("Produto não encontrado!"));
+        Optional<Product> object = productRepository.findById(id);
+        Product entity = object.orElseThrow(() -> new ObjectNotFoundException("Objeto solicitado não encontrado!"));
         return new ProductDTO(entity);
     }
 
     @Transactional
-    public ProductDTO insert(ProductDTO dto) {
+    public ProductDTO insert(ProductDTO objectDTO) {
         Product entity = new Product();
-        fromDtoToEntity(dto, entity);
+        fromDtoToEntity(objectDTO, entity);
         entity = productRepository.save(entity);
         return new ProductDTO(entity);
     }
 
     @Transactional
-    public ProductDTO update(Long id, ProductDTO dto) {
-        try {
-            Product entity = productRepository.getOne(id);
-            fromDtoToEntity(dto, entity);
-            entity = productRepository.save(entity);
-            return new ProductDTO(entity);
-        }catch (EntityNotFoundException e){
-            throw new ObjectNotFoundException("Id não encontrado: " + id);
-        }
+    public ProductDTO update(Long id, ProductDTO objectDTO) {
+		try {
+			Product entity = productRepository.getOne(id);
+			fromDtoToEntity(objectDTO, entity);
+			entity = productRepository.save(entity);
+			return new ProductDTO(entity);
+		} catch (ObjectNotFoundException e) {
+			throw new ObjectNotFoundException("Objeto solicitado não encontrado!");
+		}
     }
 
     public void delete(Long id) {
         try {
             productRepository.deleteById(id);
         }catch (EmptyResultDataAccessException e){
-            throw new ObjectNotFoundException("Id não encontrado " + id);
+            throw new ObjectNotFoundException("Objeto solicitado não encontrado!");
         }catch (DataIntegrityViolationException e){
         	throw new DataIntegrityException("O produto não pôde ser excluído!");
         }
     }
 
-    private void fromDtoToEntity(ProductDTO dto, Product entity) {
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setPrice(dto.getPrice());
+    private void fromDtoToEntity(ProductDTO objectDTO, Product entity) {
+        entity.setName(objectDTO.getName());
+        entity.setDescription(objectDTO.getDescription());
+        entity.setPrice(objectDTO.getPrice());
     }
     
 }

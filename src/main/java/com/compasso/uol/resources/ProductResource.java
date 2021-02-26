@@ -42,27 +42,27 @@ public class ProductResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id){
-        ProductDTO dto =  productService.fidById(id);
-        return ResponseEntity.ok().body(dto);
+        ProductDTO objectDTO =  productService.fidById(id);
+        return ResponseEntity.ok().body(objectDTO);
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO dto){
-        dto = productService.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
+    public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO objectDTO){
+        objectDTO = productService.insert(objectDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objectDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(objectDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> update(@Valid @PathVariable Long id , @RequestBody ProductDTO dto){
-        dto = productService.update(id, dto);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<ProductDTO> update(@Valid @RequestBody ProductDTO objectDTO, @PathVariable Long id){
+        objectDTO = productService.update(id, objectDTO);
+        return ResponseEntity.ok().body(objectDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ProductDTO> delete(@Valid @PathVariable Long id){
+    public ResponseEntity<ProductDTO> delete(@PathVariable Long id){
         productService.delete(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
 }
