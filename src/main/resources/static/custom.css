@@ -1,0 +1,28 @@
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+      .download-url-wrapper{
+        display: none!important;
+      }
+      
+      .swagger-ui .topbar {
+          background-color: #272626!important;
+      }
+   
+      
