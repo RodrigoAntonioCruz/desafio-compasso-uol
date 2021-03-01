@@ -32,16 +32,16 @@ Desenvolver uma `API REST` de catálogo de produtos que contemple as seguintes o
 
 ### Executando o projeto
 
-1. Clone ou baixe o projeto do repositório no seu `Workspace`.
+1. Clone ou baixe o projeto do repositório em seu `Computador`.
 
-2. Navegue até a raíz do seu diretório e `execute via terminal` o comando `mvnw spring-boot:run`.
+2. Navegue até a raíz do seu diretório onde salvou ou clonou o projeto, abra o `terminal e execute ` o comando `mvnw spring-boot:run`.
 
 3. Abra seu browser e navegue até `http://localhost:9999` que estará disponível a documentação da `API` juntamente com os `Endpoints` para teste.
 
 
 ### Executando os Testes
 
-1. Navegue até a raíz do seu diretório e `execute via terminal` o comando `mvnw clean test`. Este comando executará todos os casos de teste, resultando em:
+1. Navegue até a raíz do seu diretório onde salvou ou clonou o projeto, abra o `terminal e execute ` o comando `mvnw clean test`. Este comando executará todos os casos de teste, resultando em:
 
 <hr>
 
