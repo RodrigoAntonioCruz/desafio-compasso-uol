@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.compasso.uol.dto.ProductDTO;
 import com.compasso.uol.entities.Product;
 import com.compasso.uol.repositories.ProductRepository;
+import com.compasso.uol.repositories.specs.products.ProductSpecification;
 import com.compasso.uol.services.exceptions.ObjectNotFoundException;
 import lombok.RequiredArgsConstructor;
 
@@ -27,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
     
     private final ProductRepository productRepository;
-       
+    
     @Transactional(readOnly = true)
     public Page<ProductDTO> findAllPaged(PageRequest pageRequest){
            Page<Product> list =  productRepository.findAll(pageRequest);
@@ -35,8 +36,9 @@ public class ProductService {
     }
     
     @Transactional(readOnly = true)
-    public List<ProductDTO> findSearch(Double min_price, Double max_price, String q){
-    	   List<ProductDTO> list =  productRepository.searchIgnoreCase(min_price, max_price, q);
+    public List<Product> findSearch(String q, Double min_price, Double max_price){ 	
+           ProductSpecification search = new ProductSpecification(q, min_price, max_price);
+		   List<Product> list = productRepository.findAll(search);
         return list;
     }
     

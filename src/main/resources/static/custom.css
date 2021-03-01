@@ -17,7 +17,7 @@
         margin:0;
         background: #fafafa;
       }
-      .download-url-wrapper{
+      .download-url-wrapper, section .models{
         display: none!important;
       }
       

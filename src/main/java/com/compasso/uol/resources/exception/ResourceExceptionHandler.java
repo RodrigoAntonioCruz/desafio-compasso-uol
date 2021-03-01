@@ -29,11 +29,11 @@ public class ResourceExceptionHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<StandardError> validation(MethodArgumentNotValidException e, HttpServletRequest request) {
 		
-		ValidationError erro = new ValidationError(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Erro de validação", "Por favor, verifique o preenchimento dos campos", request.getRequestURI());
+		ValidationError erro = new ValidationError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Erro de validação", "Por favor, verifique o preenchimento dos campos", request.getRequestURI());
 		for (FieldError x : e.getBindingResult().getFieldErrors()) {
 			erro.addError(x.getField(), x.getDefaultMessage());
 		}		
-		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(erro);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 	}
 
 	@ExceptionHandler(value = RuntimeException.class)

@@ -15,18 +15,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
-*
-* @author Rodrigo da Cruz
-* @version 1.0
-* @since 2021-02-26
-* 
-*/
+ *
+ * @author Rodrigo da Cruz
+ * @version 1.0
+ * @since 2021-02-26
+ * 
+ */
 
 @Configuration
 @EnableSwagger2
 @PropertySource("classpath:config-swagger.properties")
-public class SwaggerConfig  implements WebMvcConfigurer {
-	
+public class SwaggerConfig implements WebMvcConfigurer {
+
 	@Value("${config.info.nome}")
 	private String nome;
 	@Value("${config.info.email}")
@@ -46,32 +46,21 @@ public class SwaggerConfig  implements WebMvcConfigurer {
 	@Value("${config.info.versao}")
 	private String versao;
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
-    }
-    
-    @Bean
-    public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.compasso.uol"))        
-          .paths(PathSelectors.any())                          
-          .build()
-          .apiInfo(apiInfo())
-          .useDefaultResponseMessages(false);
-    }
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+	}
 
-    private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfoBuilder()
-                .title (titulo)
-                .description (descricao)
-                .license(licenca)
-                .licenseUrl(licencaUrl)
-                .termsOfServiceUrl(termoServicoUrl)
-                .version(versao)
-                .build();
-        return apiInfo;
-    }  
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.compasso.uol")).paths(PathSelectors.any()).build()
+				.apiInfo(apiInfo()).useDefaultResponseMessages(false);
+	}
+
+	private ApiInfo apiInfo() {
+		ApiInfo apiInfo = new ApiInfoBuilder().title(titulo).description(descricao).license(licenca)
+				.licenseUrl(licencaUrl).termsOfServiceUrl(termoServicoUrl).version(versao).build();
+		return apiInfo;
+	}
 }
