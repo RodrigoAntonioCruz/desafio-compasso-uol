@@ -32,7 +32,7 @@ Desenvolver uma `API REST` de catálogo de produtos que contemple as seguintes o
 
 ### Executando o projeto
 
-1. Clone ou baixe o projeto do repositório em seu `Computador`.
+1. Clone ou baixe o projeto do repositório para o seu `Computador`.
 
 2. Navegue até a raíz do seu diretório onde salvou ou clonou o projeto, abra o `terminal e execute ` o comando `mvnw spring-boot:run`.
 
