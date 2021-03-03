@@ -1,7 +1,7 @@
 package com.compasso.uol.services;
 
 
-import java.util.List;
+import static org.springframework.data.jpa.domain.Specification.where;
 import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
@@ -36,10 +36,8 @@ public class ProductService {
     }
     
     @Transactional(readOnly = true)
-    public List<Product> findSearch(String q, Double min_price, Double max_price){ 	
-           ProductSpecification search = new ProductSpecification(q, min_price, max_price);
-		   List<Product> list = productRepository.findAll(search);
-        return list;
+    public Page<Product> findSearch(PageRequest pageRequest, String q, Double min_price, Double max_price){     
+           return productRepository.findAll(where(ProductSpecification.params(q,min_price, max_price)), pageRequest); 
     }
     
     @Transactional(readOnly = true)

@@ -1,7 +1,6 @@
 package com.compasso.uol.resources;
 
 import java.net.URI;
-import java.util.List;
 import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -57,12 +56,14 @@ public class ProductResource {
 	@GetMapping("/search")
 	@ApiOperation("Lista de produtos filtrados")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK")})
-	public ResponseEntity<?> search(@RequestParam(value = "q", defaultValue = "", required = false) String q,
+	public ResponseEntity<Page<Product>> search(@RequestParam(value = "q", defaultValue = "", required = false) String q,
 			                        @RequestParam(value = "min_price", required = false) Double min_price,
 			                        @RequestParam(value = "max_price", required = false) Double max_price) {
-		List<Product> list = productService.findSearch(q, min_price, max_price);
+		PageRequest pageRequest = PageRequest.of(0, 12, Direction.valueOf("ASC"), "id");
+		Page<Product> list = productService.findSearch(pageRequest, q, min_price, max_price);
 		return ResponseEntity.ok().body(list);
 	}
+
 
 	@GetMapping("/{id}")
 	@ApiOperation("Busca de um produto por ID")
