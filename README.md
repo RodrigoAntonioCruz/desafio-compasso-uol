@@ -3,7 +3,7 @@
 </p>
 
 <h2 align="center">
- <img src="https://media.istockphoto.com/vectors/vector-green-approved-certificate-icon-on-grey-background-certified-vector-id1165140364?k=6&m=1165140364&s=170667a&w=0&h=dgQTg7u-CyH0lN9fyhnLY_mDUsFc0dJqtCylwruqaPo=" width="50" height="50" / title="APROVADO!">  DESAFIO BACKEND COMPASSO UOL 
+  DESAFIO BACKEND COMPASSO UOL 
 </h2>
 
 
