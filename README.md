@@ -12,7 +12,7 @@
 Desenvolver uma `API REST` de catálogo de produtos que contemple as seguintes operações nos respectivos `Endpoints`:
 
 <p align="center">
-  <img align="center" src="https://githubfinder.compasso.rodrigodacruz.com.br/static/endpoints.png" />
+  <img align="center" src="https://raw.githubusercontent.com/RodrigoAntonioCruz/assets/main/endpoints.png" />
 </p>
 
 
@@ -46,21 +46,13 @@ Desenvolver uma `API REST` de catálogo de produtos que contemple as seguintes o
 <hr>
 
 <p align="center">
-  <img align="center" alt="Testes" src="https://githubfinder.compasso.rodrigodacruz.com.br/static/testCmd.png" />
+  <img align="center" alt="Testes" src="https://raw.githubusercontent.com/RodrigoAntonioCruz/assets/main/testCmd.png" />
 </p>
 
 <hr>
 
-
-### Build em execução
-
-Se preferir, você ver a `API` em execução e testar os `Endpoints` no endereço :
-<a href="http://api-products.rodrigodacruz.com.br:9999" target="_blank" alt="Swagger documentação">`DOCUMENTAÇÃO DA API-REST`</a>
-
-<hr>
-
 <p align="center">
-  <img align="center" alt="Swagger" src="https://githubfinder.compasso.rodrigodacruz.com.br/static/docsApi.png" />
+  <img align="center" alt="Swagger" src="https://raw.githubusercontent.com/RodrigoAntonioCruz/assets/main/docsApi.png" />
 </p>
 
 <hr>
